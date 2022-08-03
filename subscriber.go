@@ -216,10 +216,11 @@ type SetCustomFieldsItem struct {
 }
 
 type SetCustomFieldsRequest struct {
-	Items []SetCustomFieldsItem `json:"fields"`
+	SubscriberId int64                 `json:"subscriber_id"`
+	Items        []SetCustomFieldsItem `json:"fields"`
 }
 
-func (s *BotFieldService) SetCustomFields(request SetCustomFieldsRequest) (bool, *http.Response, error) {
+func (s *SubscriberService) SetCustomFields(request SetCustomFieldsRequest) (bool, *http.Response, error) {
 	return DoBoolPostRequest(s.sling, "setCustomFields", request)
 }
 
